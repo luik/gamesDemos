@@ -1,6 +1,7 @@
 package 
 {
 	import flash.desktop.NativeApplication;
+	import flash.display.DisplayObject;
 	import flash.events.Event;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -8,7 +9,8 @@ package
 	import flash.text.TextField;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
-	
+	import Loader.AssetsLoader;
+		
 	/**
 	 * ...
 	 * @author Angela Gabriela
@@ -26,32 +28,18 @@ package
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			
 			// entry point
-			var res: AssetsLoader = new AssetsLoader();
-			res.loadFrom("ui/mostrador.swf");
-			res.addEventListener(AssetsLoader.ASSETSLOADED, assetsLoaded);
-			
-			/*var text:TextField = new TextField();
-			text.text = "HelloWorld";
-			text.x = (stage.stageWidth - text.textWidth) / 2;
-			text.y = (stage.stageHeight - text.textHeight) / 2;
-			
-			addChild(text);*/
-			
-			
+			AssetsLoader.current = new AssetsLoader();
+			AssetsLoader.current.addEventListener(AssetsLoader.ASSETSLOADED, assetsLoaded);
+			AssetsLoader.current.loadFrom("ui/mostrador.swf");
 		}
 		
 		private function assetsLoaded(e:Event):void
 		{
-			var cls:Class = AssetsLoader.clases["background"];
-			addChild(new cls());
+			var cls:DisplayObject = AssetsLoader.current.getComponentByName("background");
+			addChild(cls);
 			
-			cls = AssetsLoader.clases["btn_print"];
-			addChild(new cls());
-		}
-		
-		function listo(e:Event):void
-		{
-			trace("listo");
+			cls = AssetsLoader.current.getComponentByName("btn_print");
+			addChild(cls);			
 		}
 		
 		private function deactivate(e:Event):void 
