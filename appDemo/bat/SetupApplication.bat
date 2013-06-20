@@ -15,14 +15,14 @@ set AND_ICONS=icons/android
 set AND_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%AND_CERT_FILE%" -storepass %AND_CERT_PASS%
 
 :: iOS packaging
-set IOS_DIST_CERT_FILE=
-set IOS_DEV_CERT_FILE=
-set IOS_DEV_CERT_PASS=
-set IOS_PROVISION=cert\gamesDemos.mobileprovision
+::set IOS_DIST_CERT_FILE=cert\Juank_Joju.p12
+set IOS_DEV_CERT_FILE=cert\Juank_Joju.p12
+set IOS_DEV_CERT_PASS=jojugames
+set IOS_PROVISION=cert\Everybody_Draws.mobileprovision
 set IOS_ICONS=icons/ios
 
 set IOS_DEV_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%IOS_DEV_CERT_FILE%" -storepass %IOS_DEV_CERT_PASS% -provisioning-profile %IOS_PROVISION%
-set IOS_DIST_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%IOS_DIST_CERT_FILE%" -provisioning-profile %IOS_PROVISION%
+::set IOS_DIST_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%IOS_DIST_CERT_FILE%" -provisioning-profile %IOS_PROVISION%
 
 :: Application descriptor
 set APP_XML=application.xml
